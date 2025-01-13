@@ -28,8 +28,9 @@ let getUserById = async (req, res) => {
             return res.send({ message: "user not found" }).status(404)
         }
         res.send(user).status(200)
-    } catch (error) {
-
+    } catch (err) {
+        console.error("getbyid user error : ", err)
+        res.status(500).send({ error: "getbyid  error : ", detail: err.message })
     }
 }
 
